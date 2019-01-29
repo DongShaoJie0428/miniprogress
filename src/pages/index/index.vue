@@ -12,15 +12,7 @@
       </div>
     </div>
     <!-- list列表 -->
-    <div class="list">
-      <div class="list_content" v-for="(item,index) in newsList" :key="index">
-        <span>{{item.content.abstract}}</span>
-        <div class="list_bot">
-          <p>{{item.content.media_name}}</p>
-          <p>{{item.content.share_count}}评论</p>
-        </div>
-      </div>
-    </div>
+    <Newslist :newsList="newsList"/>
     
     <!-- <button @click="goDetaile">去详情</button> -->
   </div>

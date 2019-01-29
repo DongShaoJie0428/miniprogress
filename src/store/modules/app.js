@@ -6,15 +6,30 @@ const state = {
 }
 
 const mutations = {
+  // 更新头部信息
   updateChannels(state,channels){
-    state.channels = channels
+    state.channels = channels.filter(item=>{
+      return !item.defaultNotShow
+    })
   },
+  // 更新列表数据
   updataFeedData(state,newsList){
     state.newsList = newsList
+    state.hot_time = newsList.map(item=>{
+      return item.content.behot_time
+    }).sort((a,b)=>b-a)[0]
+  },
+  // 删除数据
+  deleteData(state,id){
+    let index = state.newsList.findIndex(item=>{
+      return item.content.item_id = id
+    })
+    state.newsList.splice(index,1)
   }
 }
 
 const actions = {
+  // 获取tab数据
   async getTopData({commit}){
     let channels = await getTopData()
     console.log(channels,"...channels")
