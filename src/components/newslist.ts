@@ -9,8 +9,10 @@ import { mapMutations } from "vuex"
     })
   }
 })
-class List extends Vue {
-
+export default class List extends Vue {
+  goToDetaile(){
+    wx.navigateTo({
+      url: '/pages/detaile/main'
+    })
+  }
 }
-
-export default List

@@ -12,8 +12,12 @@
       </div>
     </div>
     <!-- list列表 -->
-    <Newslist :newsList="newsList"/>
+    <Newslist :newsList="listTojson"/>
     
+    <!-- refresh刷新 -->
+    <p :class="{refresh:true, active:isRefresh}" @click="refreshPage">
+      <img src="../../../static/refresh.png" alt="">
+    </p>
     <!-- <button @click="goDetaile">去详情</button> -->
   </div>
 </template>
@@ -73,5 +77,32 @@
     }
   }
 }
-
+.refresh{
+  position: fixed;
+  bottom:20px;
+  right:30px;
+  width:60px;
+  height:60px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 1px #c0c0c0;
+  img{
+    width:40px;
+    height:40px;
+    position:absolute;
+    left:10px;
+    top:10px;
+  }
+}
+.refresh.active{
+  animation: rotateD .8s linear infinite;
+}
+@keyframes rotateD {
+  0%{
+    transform: rotate(0)
+  }
+  100%{
+    transform: rotate(360deg)
+  }
+}
 </style>

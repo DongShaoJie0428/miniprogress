@@ -15,13 +15,14 @@ import { mapState,mapActions } from "vuex"
   computed:{
     ...mapState({
       channels:state=>state['app'].channels,
-      newsList:state=>state['app'].newsList
+      listTojson: state => state["app"].listTojson
     })
   },
   methods:{
     ...mapActions({
       getTopData:"app/getTopData",
-      getFeedData:"app/getFeedData"
+      getFeedData:"app/getFeedData",
+      getMore:"app/getMore"
     })
   }
 })
@@ -30,11 +31,7 @@ class Index extends Vue {
   current:number=0
   text:number=222
   newsList:any
-
-  // get channels(){
-  //   console.log(this.$store.state.app.channels,"...5")
-  //   return this.$store.state.app.channels;
-  // }
+  isRefresh: boolean = false
 
   onShow() { // 小程序 hook
     debug('onShow')
@@ -46,7 +43,7 @@ class Index extends Vue {
     console.log(this.$store,"...1111")
   }
 
-
+  // tab切换
   handleChangeScroll(e){
     // console.log("e...",e)
     this.current = e.target.key
@@ -56,11 +53,31 @@ class Index extends Vue {
     this['getFeedData'](appUrl)
   }
 
-  // goDetaile(): void{
-  //   wx.navigateTo({
-  //     url: '/pages/detaile/main'
-  //   });
-  // }
+  //上拉加载生命周期
+  onReachBottom() {
+    this.isRefresh = true;
+    setTimeout(() => {
+      this.isRefresh = false;
+    }, 2400);
+    this.loadData();
+  }
+  //点击刷新按钮加载
+  refreshPage() {
+    this.isRefresh = true;
+    setTimeout(() => {
+      this.isRefresh = false;
+    }, 2400);
+    this.loadData();
+  }
+  // 加载下一页
+  loadData() {
+    let appUrl = this["channels"][0].appUrl;
+    // console.log(appUrl, 'appUrl')
+    this["getMore"](appUrl).then(() => {
+      this.isRefresh = false;
+    });
+  }
+
 }
 
 export default Index
