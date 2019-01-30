@@ -10,11 +10,11 @@
         <p>{{publishTime}}</p>
       </div>
       <div class="action">
-        <button>A+</button>
-        <button>A-</button>
+        <button @click="changeAdd('+')">A+</button>
+        <button @click="changeAdd('-')">A-</button>
       </div>
     </section>
-    <section class="content">
+    <section class="content" :style="{fontSize: fontSize+'px'}">
       <li v-for="(item, index) in formatContent" :key="index">
         <p v-if="item.type=='text'">{{item.content}}</p>
         <img v-else-if="item.type=='image'" mode="widthFix" :src="item.info.src" :alt="item.info.alt">
@@ -64,9 +64,7 @@
   li{
     margin: 15rpx 0;
   }
-  p{
-    font-size: 36rpx;
-  }
+ 
   h1{
     text-align: left;
     font-size: 48rpx;

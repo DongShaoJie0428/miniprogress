@@ -22,6 +22,7 @@ class Detail extends Vue {
   placeholder: string = '写评论'
   isCollection: boolean = false
   page:number=1
+  fontSize: number = 18
 
   // 格式化内容
   get formatContent(){
@@ -50,6 +51,21 @@ class Detail extends Vue {
   onShow(){
     this['getDetail'](this.$root.$mp.query.id)
     this['getCommon']({groupId:this.$root.$mp.query.id,page:this.page})
+  }
+  
+  // 改变字体大小
+  changeAdd(type){
+    if (type == "+") {
+      if ( this.fontSize == 22 ) {
+        return 
+      }
+      this.fontSize += 2
+    } else {
+      if (this.fontSize == 14) {
+        return
+      }
+      this.fontSize -= 2
+    }
   }
 }
 

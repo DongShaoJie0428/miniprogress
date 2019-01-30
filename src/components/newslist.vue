@@ -1,9 +1,9 @@
 <!-- 这是一个原生vue单文件 -->
 <template>
   <div class="list">
-    <div class="list_content" v-for="(item,index) in newsList" :key="index" @click="goToDetaile(item.content.display_url)">
+    <div class="list_content" v-for="(item,index) in newsList" :key="index" >
       <div>
-        <span class="text">{{item.content.abstract}}</span>
+        <span class="text"  @click="goToDetaile(item.content.display_url)">{{item.content.abstract}}</span>
         <div class="gallery">
           <img :src="value.url" mode="widthFix" alt="" v-for="(value,key) in item.content.image_list" :key="key">
         </div>

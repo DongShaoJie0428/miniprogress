@@ -22,10 +22,10 @@ const mutations = {
   },
   // 删除数据
   deleteData(state,id){
-    let index = state.newsList.findIndex(item=>{
+    let index = state.listTojson.findIndex(item=>{
       return item.content.item_id === id
     })
-    state.newsList.splice(index,1)
+    state.listTojson.splice(index,1)
   },
   // 上拉加载
   appendNewsList(state, list) {
