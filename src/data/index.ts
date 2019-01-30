@@ -10,4 +10,13 @@ export let getFeed = (url) => {
   return fly.request(url)
 }
 
+// 获取资讯详情
+export let getDetail = id=>{
+  return fly.request(`https://m.toutiao.com/pwa/api/wxapp/info/${id}/`)
+}
+
+// 获取评论
+export let getCommon = (groupId,page) =>{
+  return fly.request(`https://ib.snssdk.com/article/v1/tab_comments/?group_id=${groupId}&&tab_index=${page}&count=10&offset=0`)
+}
 

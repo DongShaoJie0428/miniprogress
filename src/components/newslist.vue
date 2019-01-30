@@ -1,7 +1,7 @@
 <!-- 这是一个原生vue单文件 -->
 <template>
   <div class="list">
-    <div class="list_content" v-for="(item,index) in newsList" :key="index" @click="goToDetaile">
+    <div class="list_content" v-for="(item,index) in newsList" :key="index" @click="goToDetaile(item.content.display_url)">
       <div>
         <span class="text">{{item.content.abstract}}</span>
         <div class="gallery">

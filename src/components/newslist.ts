@@ -10,9 +10,10 @@ import { mapMutations } from "vuex"
   }
 })
 export default class List extends Vue {
-  goToDetaile(){
+  goToDetaile(url){
+    let arr = url.split('/');
     wx.navigateTo({
-      url: '/pages/detaile/main'
+      url: `/pages/detaile/main?id=${arr[arr.length-2]}`
     })
   }
 }
