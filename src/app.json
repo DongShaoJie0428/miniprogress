@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/detaile/main"
+    "pages/detaile/main",
+    "pages/webview/main"
   ],
   "subPackages": [
     {
@@ -16,5 +17,6 @@
     "navigationBarBackgroundColor": "#D33D3E",
     "navigationBarTitleText": "今日头条",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "navigateToMiniProgramAppIdList":["wx9bff04a48efe24cb"]
 }

@@ -11,6 +11,10 @@
         <i-icon type="group" size="28" color="#000" />
       </div>
     </div>
+    <!-- 跳转web-view时，拼接路径  -->
+    <a href="/pages/webview/main?src=https://baidu.com">点击跳转web</a>
+    <!-- 跳转小程序 -->
+    <navigator target="miniProgram" app-id="wx9bff04a48efe24cb">跳转小程序</navigator>
     <!-- list列表 -->
     <Newslist :newsList="listTojson"/>
     
